@@ -42,7 +42,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-    
+
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
@@ -70,9 +70,10 @@ class KategoriController extends Controller
     public function edit(Kategori $kategori, $id)
     {
 
-        $items = Kategori::findOrFail($id);
+        $kategori = Kategori::findOrFail($id);
         return view("pages.admin.kategori.edit",[
-            'items' => $items,
+            'kategori' => $kategori,
+            'id' => $id,
         ]);
     }
 
@@ -83,9 +84,14 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        //
+        Kategori::where('id', $id)->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect('/dashboard/buku-kategori')->with("berhasil", "Kategori Berhasil diubah!");
     }
 
     /**

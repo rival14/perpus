@@ -104,7 +104,7 @@ class MemberController extends Controller
 
         $validatedData["password"] = bcrypt(($validatedData["password"]));
         User::where('id', $id)->update($validatedData);
-        return redirect('/dashboard/user-member')->with("berhasil", "Memebr Baru Berhasil diubah!");
+        return redirect('/dashboard/user-member')->with("berhasil", "Member Berhasil diubah!");
     }
 
     /**

@@ -21,16 +21,17 @@
             <h2>Edit Kategori</h2>
         </div>
         <div class="card-body">
-            <form class="form-floating" action="/dashboard/buku-kategori/{{ ($items->id) }}" method="post">
+            <form class="form-floating" action="/dashboard/buku-kategori/{{ ($id) }}" method="post">
                 @method("PUT")
                 @csrf
                 <div class="form-floating mb-3">
-                    <select class="form-select @error("kategoris_id") is-invalid @enderror" name="kategoris_id" id="kategoris_id" aria-label="Floating label select example" required" autofocus>
+                    {{-- <select class="form-select @error("kategoris_id") is-invalid @enderror" name="kategoris_id" id="kategoris_id" aria-label="Floating label select example" required" autofocus>
                         <option value="{{ $items->id }}">{{ $items->name }}</option>
                         @foreach ($items as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
+                    <input type="text" class="form-control" name="name" value="{{ $kategori->name }}">
                     <label for="kategoris_id">Kategori</label>
                     @error("kategoris_id")
                     <div class="invalid-feedback">

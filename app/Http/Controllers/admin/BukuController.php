@@ -131,7 +131,9 @@ class BukuController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul);
-        $data['image'] = $request->file('image')->store("cover-image");
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store("cover-image");
+        }
         $data["excerpt"] = Str::limit(strip_tags($request->sinopsis, 200));
 
         $item = Buku::findOrFail($id);
