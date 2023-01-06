@@ -7,7 +7,7 @@
 
   <div class="dropdown">
   <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Admin
+    {{ auth()->user()->name }}
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="#">My Profile</a></li>

@@ -39,8 +39,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">BUKU TERPINJAM</h5>
-                            <span class="h2 font-weight-bold mb-0">3</span>
-
+                            <span class="h2 font-weight-bold mb-0">{{ $tBuku }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green rounded-circle shadow">
@@ -48,7 +47,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -81,7 +79,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">History</h5>
-                            <span class="h2 font-weight-bold mb-0">3</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $history }}</span>
 
                         </div>
                         <div class="col-auto">
@@ -102,7 +100,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Selesai</h5>
-                            <span class="h2 font-weight-bold mb-0">3</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $selesai }}</span>
 
                         </div>
                         <div class="col-auto">
@@ -123,7 +121,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Dipinjam</h5>
-                            <span class="h2 font-weight-bold mb-0">3</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $pinjam }}</span>
 
                         </div>
                         <div class="col-auto">
@@ -138,7 +136,7 @@
         </div>
     </div>
 
-    <script src="/js/jquery-3.6.1.min.js"></script>
+    {{-- <script src="/js/jquery-3.6.1.min.js"></script>
     <script src="/js/apexcharts.js"></script>
     <div class="row mt-5 ">
         <div class="card col-lg-7 me-5">
@@ -214,7 +212,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     </main>

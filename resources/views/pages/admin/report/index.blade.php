@@ -10,6 +10,44 @@
         <h1 class="h2">Report</h1>
       </div>
 
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Peminjam</th>
+                    <th scope="col">Order No</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Alamat Rak</th>
+                    <th scope="col">Dari</th>
+                    <th scope="col">Sampai</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($items as $i => $item)
+                    <tr>
+                        <th scope="row">{{$i + 1}}</th>
+                        <td>{{$item->user->name}}</td>
+                        <td>{{$item->order_number}}</td>
+                        <td>{{$item->buku->judul}}</td>
+                        <td>{{$item->buku->alamat}}</td>
+                        <td>{{$item->from}}</td>
+                        <td>{{$item->to}}</td>
+                        <td>{{$item->status}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="{{ route('excel') }}" role="button">Export Excell</a>
+        </div>
+    </div>
+
+
     <script src="/js/jquery-3.6.1.min.js"></script>
     <script src="/js/apexcharts.js"></script>
     <div class="row mt-5 ">

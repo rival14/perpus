@@ -11,6 +11,7 @@ use \App\Http\Controllers\admin\MemberController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\ReportController;
 use \App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\ExcellExportController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -36,7 +37,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/kategori/{slug}', [HomeController::class, 'kategori']);
 Route::get('/histori', [HomeController::class, 'history']);
 
-Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
+Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order')->middleware('user');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 
@@ -56,6 +57,8 @@ Route::middleware(['admin'])->group(function(){
     Route::get('/dashboard/order/status/{id}/complete', [OrdersController::class, 'complete']);
 
     Route::get('/dashboard/report', [ReportController::class, 'index']);
+
+    Route::get('/dashboard/report/export', [ExcellExportController::class, 'index'])->name('excel');
 });
 
 

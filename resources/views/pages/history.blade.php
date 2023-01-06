@@ -30,6 +30,7 @@ Home
                     <th scope="col">#</th>
                     <th scope="col">Order No</th>
                     <th scope="col">Judul</th>
+                    <th scope="col">Alamat Rak</th>
                     <th scope="col">Dari</th>
                     <th scope="col">Sampai</th>
                     <th scope="col">Status</th>
@@ -41,6 +42,7 @@ Home
                         <th scope="row">{{$i + 1}}</th>
                         <td>{{$item->order_number}}</td>
                         <td>{{$item->buku->judul}}</td>
+                        <td>{{$item->buku->alamat}}</td>
                         <td>{{$item->from}}</td>
                         <td>{{$item->to}}</td>
                         <td>{{$item->status}}</td>

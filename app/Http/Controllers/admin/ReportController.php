@@ -21,6 +21,8 @@ class ReportController extends Controller
             $order[$i] = Order::whereMonth("created_at", $i + 1)->count();
         }
 
-        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order'));
+        $items = $items = Order::with(['user', 'buku'])->get();
+
+        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'items'));
     }
 }
