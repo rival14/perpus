@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\HistoriExport;
 
 class ReportController extends Controller
 {
@@ -24,5 +25,11 @@ class ReportController extends Controller
         $items = $items = Order::with(['user', 'buku'])->get();
 
         return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'items'));
+    }
+
+    public function excel()
+    {
+        $nama_file = 'laporan_history_'.date('Y-m-d_H-i-s').'.xlsx';
+        return \Maatwebsite\Excel\Facades\Excel::download(new HistoriExport, $nama_file);
     }
 }

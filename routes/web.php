@@ -58,7 +58,8 @@ Route::middleware(['admin'])->group(function(){
 
     Route::get('/dashboard/report', [ReportController::class, 'index']);
 
-    Route::get('/dashboard/report/export', [ExcellExportController::class, 'index'])->name('excel');
+    Route::get('/dashboard/report/export-excel', [ReportController::class, 'excel'])->name('excel');
+    Route::get('/dashboard/report/export-pdf', [ExcellExportController::class, 'index'])->name('pdf');
 });
 
 
