@@ -95,5 +95,14 @@
 
 .gambar2{
     max-width: 200px !important;
-    
+
+}
+
+.c-judul{
+    max-height: 50px !important;
+    text-size-adjust: auto ;
+}
+
+.isi-body{
+    min-height: 400px !important;
 }

@@ -23,7 +23,7 @@
 
 
         <div class="card-body">
-            <form class="form-floating" action="/dashboard/kategori" method="post">
+            <form class="form-floating" action="/dashboard/buku-kategori" method="post">
                 @csrf
                 <div class="form-floating mb-3">
                     <input type="text" name="name" class="form-control @error("name") is-invalid @enderror" id="name" placeholder="Kategori" autofocus required value="{{ old('name') }}">

@@ -62,7 +62,7 @@ class BukuController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul);
         $data['image'] = $request->file('image')->store("cover-image");
-        $data["excerpt"] = Str::limit(strip_tags($request->sinopsis, 200));
+        $data["excerpt"] = Str::words($request->sinopsis, 70, '...');
 
 
 
@@ -134,7 +134,7 @@ class BukuController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store("cover-image");
         }
-        $data["excerpt"] = Str::limit(strip_tags($request->sinopsis, 200));
+        $data["excerpt"] = Str::words($request->sinopsis, 70, '...');
 
         $item = Buku::findOrFail($id);
         $item->update($data, $validatedData);
