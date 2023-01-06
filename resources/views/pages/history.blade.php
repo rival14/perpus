@@ -24,23 +24,30 @@ Home
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-        @foreach ($items as $item)
-        <div class="col">
-          <div class="card text-bg-dark ">
-            <a href="{{ route('order', $item->slug) }}"><img src="{{ asset("storage/" . $item->image) }}" class="card-img-top img-fluid" style="max-height: 500px"></a>
-            <a href="{{ route('order', $item->slug) }}" class="text-decoration-none text-white"><div class="card-header text-center c-judul"><h3>{{ $item->judul }}</h3></div></a>
-            <div class="card-body isi-body">
-                <h5 class="card-title">Jenis : {{ $item->genre }}  </h5>
-                <h5 class="card-title">Genre : {{ $item->kategori->name }}</h5>
-              <p class="card-text">{{ $item->excerpt }}</p>
-              <div class="d-flex justify-content-end pt-2">
-                <small class="text">{{ $item->stock }}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Order No</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Dari</th>
+                    <th scope="col">Sampai</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($items as $i => $item)
+                    <tr>
+                        <th scope="row">{{$i + 1}}</th>
+                        <td>{{$item->order_number}}</td>
+                        <td>{{$item->buku->judul}}</td>
+                        <td>{{$item->from}}</td>
+                        <td>{{$item->to}}</td>
+                        <td>{{$item->status}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
       </div>
 
       <div class="d-flex justify-content-end mt-3">

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KategoriController;
 use \App\Http\Controllers\admin\MemberController;
+use App\Http\Controllers\admin\OrdersController;
+use App\Http\Controllers\admin\ReportController;
 use \App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\OrderController;
 
@@ -31,8 +33,11 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/kategori/{slug}', [HomeController::class, 'kategori']);
+Route::get('/histori', [HomeController::class, 'history']);
+
 Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
-Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 
 
@@ -47,6 +52,10 @@ Route::middleware(['admin'])->group(function(){
 
     Route::resource('/dashboard/buku-kategori', KategoriController::class)->except('show');
 
+    Route::get('/dashboard/order', [OrdersController::class, 'index']);
+    Route::get('/dashboard/order/status/{id}/complete', [OrdersController::class, 'complete']);
+
+    Route::get('/dashboard/report', [ReportController::class, 'index']);
 });
 
 
