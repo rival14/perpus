@@ -9,6 +9,7 @@ use \App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KategoriController;
 use \App\Http\Controllers\admin\MemberController;
 use \App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,10 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register-c
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
+Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
+
 
 
 Route::middleware(['admin'])->group(function(){

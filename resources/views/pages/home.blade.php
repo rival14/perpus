@@ -28,8 +28,8 @@ Home
         @foreach ($items as $item)
         <div class="col">
           <div class="card text-bg-dark ">
-            <a href="{{ route('dashboard') }}"><img src="{{ asset("storage/" . $item->image) }}" class="card-img-top img-fluid" style="max-height: 500px"></a>
-            <a href="/dashboard" class="text-decoration-none text-white"><div class="card-header text-center c-judul"><h3>{{ $item->judul }}</h3></div></a>
+            <a href="{{ route('order', $item->slug) }}"><img src="{{ asset("storage/" . $item->image) }}" class="card-img-top img-fluid" style="max-height: 500px"></a>
+            <a href="{{ route('order', $item->slug) }}" class="text-decoration-none text-white"><div class="card-header text-center c-judul"><h3>{{ $item->judul }}</h3></div></a>
             <div class="card-body isi-body">
                 <h5 class="card-title">Jenis : {{ $item->genre }}  </h5>
                 <h5 class="card-title">Genre : {{ $item->kategori->name }}</h5>
