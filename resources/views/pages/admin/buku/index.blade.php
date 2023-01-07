@@ -89,10 +89,19 @@
                         </tr>
                     @endforelse
                 </tbody>
-
             </table>
-        </div>
     </div>
+
+    <div class="row mt-2">
+                <div class="col-auto">
+                    <a class="btn btn-success" href="{{ route('buku_excel') }}" role="button">Export Excell</a>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-danger" href="{{ route('buku_pdf') }}" role="button">Export PDF</a>
+                </div>
+              </div>
+            </div>
+
     </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

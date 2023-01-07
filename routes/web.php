@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\BukuController;
+use App\Http\Controllers\admin\BukuExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -50,6 +51,9 @@ Route::middleware(['admin'])->group(function(){
     Route::resource('/dashboard/user-member', MemberController::class)->except('show');
 
     Route::resource('/dashboard/buku', BukuController::class);
+
+    Route::get('/dashboard/buku-excel', [BukuExportController::class, 'excel'])->name('buku_excel');
+    Route::get('/dashboard/buku-pdf', [BukuExportController::class, 'pdf'])->name('buku_pdf');
 
     Route::resource('/dashboard/buku-kategori', KategoriController::class)->except('show');
 

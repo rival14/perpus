@@ -37,7 +37,6 @@ class ReportController extends Controller
 
     public function pdf()
     {
-
         $items = Order::with(['user', 'buku'])->get();
         $pdf = Pdf::loadView('pages.admin.report.pdf.index', compact('items'))->setPaper('a4', 'landscape');
         return $pdf->download('laporan_history_'.date('Y-m-d_H-i-s').'.pdf');

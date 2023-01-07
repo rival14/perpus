@@ -3,22 +3,25 @@
 namespace App\Exports;
 
 
-use App\Models\Order;
-use App\Models\User;
 use App\Models\Buku;
+use App\Models\User;
+use App\Models\Order;
 
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class HistoriExport implements FromView
+class BukuExport implements FromView
 {
     public function view(): View
     {
-        $items = Order::with(['user', 'buku'])->get();
-        return view('pages.admin.report.excell.index', [
+        $items = Buku::with(['kategori'])->get();
+        return view('pages.admin.buku.excell.index', [
             'items' => $items
         ]);
     }
+
+
 }
 
