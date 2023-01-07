@@ -28,6 +28,8 @@ class OrderController extends Controller
             'status' => 'Dipinjam',
         ]);
 
+        Buku::where('id', $request->buku_id)->decrement('stock');
+
         return redirect('/')->with("success", "Sukses memesan buku!!.");
     }
 
