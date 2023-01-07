@@ -39,7 +39,7 @@ class ReportController extends Controller
     {
 
         $items = Order::with(['user', 'buku'])->get();
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pages.admin.report.pdf.index', compact('items'));
+        $pdf = Pdf::loadView('pages.admin.report.pdf.index', compact('items'))->setPaper('a4', 'landscape');
         return $pdf->download('laporan_history_'.date('Y-m-d_H-i-s').'.pdf');
     }
 }

@@ -51,7 +51,7 @@
     </div>
 
 
-    {{-- <script src="/js/jquery-3.6.1.min.js"></script>
+    <script src="/js/jquery-3.6.1.min.js"></script>
     <script src="/js/apexcharts.js"></script>
     <div class="row mt-5 ">
         <div class="card col-lg-7 me-5">
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 
     </main>
