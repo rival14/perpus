@@ -2,34 +2,23 @@
 
 namespace App\Exports;
 
-use App\Models\Order;
 
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Order;
+use App\Models\User;
+use App\Models\Buku;
+
+
+use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class HistoriExport implements FromCollection, WithHeadings
+class HistoriExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return Order::with(['user', 'buku'])->get();
+         $items = Order::with(['user', 'buku'])->get();
+        return view('pages.admin.report.excell.index', [
+            'items' => $items
+        ]);
     }
-
-    public function headings(): array
-    {
-        return [
-            'No',
-            'Peminjam',
-            'Order No',
-            'Judul  ',
-            'Alamat Rak',
-            'Order dari',
-            'Order Sampai',
-            'Status'
-        ];
-    }
-
 }
+
