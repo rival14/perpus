@@ -41,9 +41,12 @@
         </table>
     </div>
 
-    <div class="row">
+    <div class="row d-flex justify-content-lg-start">
         <div class="col">
             <a class="btn btn-primary" href="{{ route('excel') }}" role="button">Export Excell</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{ route('pdf') }}" role="button">Export Excell</a>
         </div>
     </div>
 

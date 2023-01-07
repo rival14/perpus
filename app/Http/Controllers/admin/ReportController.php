@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exports\HistoriExport;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
@@ -31,5 +32,12 @@ class ReportController extends Controller
     {
         $nama_file = 'laporan_history_'.date('Y-m-d_H-i-s').'.xlsx';
         return \Maatwebsite\Excel\Facades\Excel::download(new HistoriExport, $nama_file);
+    }
+
+    public function pdf()
+    {
+        $items = Order::with(['user', 'buku'])->get();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pages.admin.report.pdf.index', compact('items'));
+        return $pdf->download('laporan_history_'.date('Y-m-d_H-i-s').'.pdf');
     }
 }
