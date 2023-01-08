@@ -133,6 +133,47 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="card col-lg-7 me-5">
+            <div class="card-body">
+                <div id="chart2">
+                        <script>
+                           var options = {
+                            series: [{
+                                data: {!!json_encode($kategori)!!}
+                            }],
+                            chart: {
+                            height: 350,
+                            type: 'bar',
+                            zoom: {
+                                enabled: false
+                            }
+                            },
+                            dataLabels: {
+                            enabled: false
+                            },
+                            stroke: {
+                            curve: 'straight'
+                            },
+                            title: {
+                            text: 'Kategori Buku',
+                            align: 'center'
+                            },
+                            grid: {
+                            row: {
+                                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                                opacity: 0.5
+                            },
+                            },
+                            };
+
+                            var chart = new ApexCharts(document.querySelector("#chart2"), options);
+                            chart.render();
+                        </script>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     </main>

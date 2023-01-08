@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Kategori;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Exports\HistoriExport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
@@ -24,9 +25,16 @@ class ReportController extends Controller
             $order[$i] = Order::whereMonth("created_at", $i + 1)->count();
         }
 
-        $items = $items = Order::with(['user', 'buku'])->get();
+        $categories = Kategori::withCount('buku')->get();
 
-        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'items'));
+        $kategori = [];
+        foreach ($categories as $key => $value) {
+            $kategori[] = [
+                "x" => $value->name,
+                "y" => $value->buku_count,
+            ];
+        }
+        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'kategori'));
     }
 
     public function excel()
