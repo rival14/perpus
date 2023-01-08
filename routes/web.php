@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\BukuController;
+use App\Http\Controllers\admin\BukuExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -11,6 +12,7 @@ use \App\Http\Controllers\admin\MemberController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\ReportController;
 use \App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\ExcellExportController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -36,7 +38,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/kategori/{slug}', [HomeController::class, 'kategori']);
 Route::get('/histori', [HomeController::class, 'history']);
 
-Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order');
+Route::get('/order/{slug}', [OrderController::class, 'index'])->name('order')->middleware('user');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 
@@ -50,12 +52,18 @@ Route::middleware(['admin'])->group(function(){
 
     Route::resource('/dashboard/buku', BukuController::class);
 
+    Route::get('/dashboard/buku-excel', [BukuExportController::class, 'excel'])->name('buku_excel');
+    Route::get('/dashboard/buku-pdf', [BukuExportController::class, 'pdf'])->name('buku_pdf');
+
     Route::resource('/dashboard/buku-kategori', KategoriController::class)->except('show');
 
     Route::get('/dashboard/order', [OrdersController::class, 'index']);
     Route::get('/dashboard/order/status/{id}/complete', [OrdersController::class, 'complete']);
 
     Route::get('/dashboard/report', [ReportController::class, 'index']);
+
+    Route::get('/dashboard/report/export-excel', [ReportController::class, 'excel'])->name('excel');
+    Route::get('/dashboard/report/export-pdf', [ReportController::class, 'pdf'])->name('pdf');
 });
 
 

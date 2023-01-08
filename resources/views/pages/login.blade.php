@@ -19,12 +19,20 @@
 
     <div class="row justify-content-center my-5">
     <div class="col-md-4">
+
         @if(session()->has("berhasil"))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           {{ session("berhasil") }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        @elseif(session()->has("hLogin"))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ session("hLogin") }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         @endif
+
+
 
         @if(session()->has("loginError"))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">

@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Exports\HistoriExport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -32,5 +35,18 @@ class ReportController extends Controller
             ];
         }
         return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'kategori'));
+    }
+
+    public function excel()
+    {
+        $nama_file = 'laporan_history_'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new HistoriExport, $nama_file, \Maatwebsite\Excel\Excel::XLSX);
+    }
+
+    public function pdf()
+    {
+        $items = Order::with(['user', 'buku'])->get();
+        $pdf = Pdf::loadView('pages.admin.report.pdf.index', compact('items'))->setPaper('a4', 'landscape');
+        return $pdf->download('laporan_history_'.date('Y-m-d_H-i-s').'.pdf');
     }
 }

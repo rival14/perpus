@@ -23,6 +23,13 @@ Home
   <div class="album py-5 bg-light">
     <div class="container">
 
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session("success") }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
         @foreach ($items as $item)

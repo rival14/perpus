@@ -33,17 +33,19 @@
             </a>
           </li> --}}
           <li class="nav-item">
-            <a class="nav-link {{ Request::is(" dashboard/order*") ? "active" :"" }}"" href="/dashboard/order">
+            <a class="nav-link {{ Request::is("dashboard/order*") ? "active" :"" }}"" href="/dashboard/order">
               <span data-feather="bar-chart-2" class="align-text-bottom"></span>
               Order
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is(" dashboard/report*") ? "active" :"" }}"" href="/dashboard/report">
+            <a class="nav-link {{ Request::is("dashboard/report*") ? "active" :"" }}"" href="/dashboard/report">
               <span data-feather="bar-chart-2" class="align-text-bottom"></span>
               Reports
             </a>
           </li>
+
+
           {{-- <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="layers" class="align-text-bottom"></span>
