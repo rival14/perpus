@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kategori;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +22,15 @@ class ReportController extends Controller
             $order[$i] = Order::whereMonth("created_at", $i + 1)->count();
         }
 
-        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order'));
+        $categories = Kategori::withCount('buku')->get();
+
+        $kategori = [];
+        foreach ($categories as $key => $value) {
+            $kategori[] = [
+                "x" => $value->name,
+                "y" => $value->buku_count,
+            ];
+        }
+        return view('pages.admin.report.index', compact('total_buku', 'judul_buku', 'order', 'kategori'));
     }
 }
